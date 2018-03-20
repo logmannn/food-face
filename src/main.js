@@ -1,4 +1,4 @@
-// import './styles.css';
+import './styles.css';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import { **insert prototype name** } from './food-face.js';
@@ -6,12 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 $( document ).ready(function(){
   // Part 1 - Collect User Input Using jQuery Click Listener note we use the class (.) of search_button
   // $('.search_button').on('click', function(){
-
-    // Collect user by grabbing the input form's value via id (#)
-    var userInput = $('#form-value').val().trim();
-
-    // Change the input to suit the API (ie change spaces to +)
-    userInput = userInput.replace(/ /g, "+");
 
     var random50 = Math.floor(Math.random() * 50);
     // Create the Giphy API URL
@@ -37,11 +31,12 @@ $( document ).ready(function(){
       var giphyURL = response.data[0].images.fixed_height.url;
       $('#mad').attr('src', giphyURL);
     });
+    var stoned = 'http://api.giphy.com/v1/gifs/search?q=stoned&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
     $.ajax({url: stoned, method: 'GET'}).done(function(response){
       var giphyURL = response.data[0].images.fixed_height.url;
       $('#stoned').attr('src', giphyURL);
     });
-    var stoned = 'http://api.giphy.com/v1/gifs/search?q=stoned&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+
 
   //   return false;
   // })

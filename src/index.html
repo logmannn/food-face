@@ -4,19 +4,54 @@
   <title>Mood Food</title>
 </head>
 <body>
-  <h1>Mood Food</h1>
-  <div class="info">
-      <form class="gif-form">
-        <input type="text" id="form-value" class="search-input-rounded">
-        <button type="submit" class="search_button"> Search for GIFs </button>
-      </form>
-      <div class="rando_facts animated bounceIn">
-        <img id="happy" src=""/>
-        <img id="neutral" src=""/>
-        <img id="sad" src=""/>
-        <img id="mad" src=""/>
-        <img id="stoned" src=""/>
+  <h1 class="main-title">Food Mood</h1>
+  <div class="container">
+    <div class="rando_facts animated bounceIn">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <a href="#">
+              <div class="faces">
+                😃
+              </div>
+              <img id="happy" class="emotions" src=""/>
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="#">
+              <div class="faces">
+                😐
+              </div>
+              <img id="neutral" class="emotions" src=""/>
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="#">
+              <div class="faces">
+                😥
+              </div>
+              <img id="sad" class="emotions" src=""/>
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="#">
+              <div class="faces">
+                😠
+              </div>
+              <img id="mad" class="emotions" src=""/>
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="#">
+              <div class="faces">
+                😳
+              </div>
+              <img id="stoned" class="emotions" src=""/>
+            </a>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <!-- Link in jQuery from CDN -->
