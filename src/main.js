@@ -1,119 +1,48 @@
 // import './styles.css';
-// import $ from 'jquery';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// //import { **insert prototype name** } from './food-face.js';
-//
-// $(document).ready(function() {
-//   var PUBLIC_KEY = '3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
-//   var BASE_URL = '//api.giphy.com/v1/gifs/';
-//   var ENDPOINT = 'search';
-//   var LIMIT = 1;
-//   var RATING = 'pg';
-//
-//   var $queryInput = $('.query');
-//   var $resultWrapper = $('.result');
-//   var $loader = $('.loader');
-//   var $inputWrapper = $('.input-wrapper');
-//   var $clear = $('.clear');
-//   var $button = $('.random');
-//   var currentTimeout = void 0;
-//
-//   var query = {
-//     text: null,
-//     offset: 0,
-//     request: function request() {
-//       return '' + BASE_URL + ENDPOINT + '?q=' + this.text + '&limit=' + LIMIT + '&rating=' + RATING + '&offset=' + this.offset + '&api_key=' + PUBLIC_KEY;
-//     },
-//     fetch: function fetch(callback) {
-//       $.getJSON(this.request()).success(function (data) {
-//         var results = data.data;
-//
-//         if (results.length) {
-//           var url = results[0].images.downsized.url;
-//           console.log(results);
-//           callback(url);
-//         } else {
-//           callback('');
-//         }
-//       }).fail(function (error) {
-//         console.log(error);
-//       });
-//     }
-//   };
-//
-//   function buildImg() {
-//     var src = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '//giphy.com/embed/xv3WUrBxWkUPC';
-//     var classes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'gif hidden';
-//
-//     return '<img src="' + src + '" class="' + classes + '" alt="gif" />';
-//   }
-//
-//   $clear.on('click', function (e) {
-//     $queryInput.val('');
-//     $inputWrapper.removeClass('active').addClass('empty');
-//     $('.gif').addClass('hidden');
-//     $loader.removeClass('done');
-//     $button.removeClass('active');
-//   });
-//
-//   $button.on('click', function (e) {
-//     query.offset = Math.floor(Math.random() * 25);
-//
-//     query.fetch(function (url) {
-//       if (url.length) {
-//         $resultWrapper.html(buildImg(url));
-//
-//         $button.addClass('active');
-//       } else {
-//         $resultWrapper.html('<p class="no-results hidden">No Results found for <strong>' + query.text + '</strong></p>');
-//
-//         $button.removeClass('active');
-//       }
-//
-//       $loader.addClass('done');
-//       currentTimeout = setTimeout(function () {
-//         $('.hidden').toggleClass('hidden');
-//       }, 1000);
-//     });
-//   });
-//
-//   $queryInput.on('keyup', function (e) {
-//     var key = e.which || e.keyCode;
-//     query.text = $queryInput.val();
-//     query.offset = Math.floor(Math.random() * 25);
-//
-//     if (currentTimeout) {
-//       clearTimeout(currentTimeout);
-//       $loader.removeClass('done');
-//     }
-//
-//     currentTimeout = setTimeout(function () {
-//       currentTimeout = null;
-//       $('.gif').addClass('hidden');
-//
-//       if (query.text && query.text.length) {
-//         $inputWrapper.addClass('active').removeClass('empty');
-//
-//         query.fetch(function (url) {
-//           if (url.length) {
-//             $resultWrapper.html(buildImg(url));
-//
-//             $button.addClass('active');
-//           } else {
-//             $resultWrapper.html('<p class="no-results hidden">No Results found for <strong>' + query.text + '</strong></p>');
-//
-//             $button.removeClass('active');
-//           }
-//
-//           $loader.addClass('done');
-//           currentTimeout = setTimeout(function () {
-//             $('.hidden').toggleClass('hidden');
-//           }, 1000);
-//         });
-//       } else {
-//         $inputWrapper.removeClass('active').addClass('empty');
-//         $button.removeClass('active');
-//       }
-//     }, 1000);
-//   });
-// });
+import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import { **insert prototype name** } from './food-face.js';
+
+$( document ).ready(function(){
+  // Part 1 - Collect User Input Using jQuery Click Listener note we use the class (.) of search_button
+  // $('.search_button').on('click', function(){
+
+    // Collect user by grabbing the input form's value via id (#)
+    var userInput = $('#form-value').val().trim();
+
+    // Change the input to suit the API (ie change spaces to +)
+    userInput = userInput.replace(/ /g, "+");
+
+    var random50 = Math.floor(Math.random() * 50);
+    // Create the Giphy API URL
+
+    // Part 2 - Use AJAX to call GIPHY API (note that the .done() function waits for the API to respond)
+    var happy = 'http://api.giphy.com/v1/gifs/search?q=happy&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+    $.ajax({url: happy, method: 'GET'}).done(function(response){
+      var giphyURL = response.data[0].images.fixed_height.url;
+      $('#happy').attr('src', giphyURL);
+    });
+    var neutral = 'http://api.giphy.com/v1/gifs/search?q=neutral&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+    $.ajax({url: neutral, method: 'GET'}).done(function(response){
+      var giphyURL = response.data[0].images.fixed_height.url;
+      $('#neutral').attr('src', giphyURL);
+    });
+    var sad = 'http://api.giphy.com/v1/gifs/search?q=sad&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+    $.ajax({url: sad, method: 'GET'}).done(function(response){
+      var giphyURL = response.data[0].images.fixed_height.url;
+      $('#sad').attr('src', giphyURL);
+    });
+    var mad = 'http://api.giphy.com/v1/gifs/search?q=mad&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+    $.ajax({url: mad, method: 'GET'}).done(function(response){
+      var giphyURL = response.data[0].images.fixed_height.url;
+      $('#mad').attr('src', giphyURL);
+    });
+    $.ajax({url: stoned, method: 'GET'}).done(function(response){
+      var giphyURL = response.data[0].images.fixed_height.url;
+      $('#stoned').attr('src', giphyURL);
+    });
+    var stoned = 'http://api.giphy.com/v1/gifs/search?q=stoned&offset='+random50+'&api_key=3DhMWAGnrtCvvI3OOlUGScIT0S5EBgYt';
+
+  //   return false;
+  // })
+});
