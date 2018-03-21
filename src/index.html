@@ -1,61 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Mood Food</title>
-</head>
-<body>
-  <h1 class="main-title">Food Mood</h1>
-  <div class="container">
-    <div class="rando_facts animated bounceIn">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <a href="#">
-              <div class="faces">
-                😃
-              </div>
-              <img id="happy" class="emotions" src=""/>
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <div class="faces">
-                😐
-              </div>
-              <img id="neutral" class="emotions" src=""/>
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <div class="faces">
-                😥
-              </div>
-              <img id="sad" class="emotions" src=""/>
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <div class="faces">
-                😠
-              </div>
-              <img id="mad" class="emotions" src=""/>
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <div class="faces">
-                😳
-              </div>
-              <img id="stoned" class="emotions" src=""/>
-            </a>
-          </div>
-        </div>
-      </div>
+  <head>
+    <!-- <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+    <!-- <script type="text/javascript" src="weather-interface.js"></script> -->
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Get Weather Conditions From Anywhere!</h1>
+      <label for="location">Enter a location:</label>
+      <input id="location" type="text">
+      <button class="btn-success" id="weatherLocation">Get Current Humidity!</button>
+      <div class="errors"></div>
+      <div class="showHumidity"></div>
+      <div class="showTemp"></div>
     </div>
-  </div>
-
-  <!-- Link in jQuery from CDN -->
-  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
-
   </body>
 </html>

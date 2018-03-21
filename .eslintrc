@@ -8,7 +8,8 @@
     'browser': true,
     'jquery': true,
     'node': true,
-    'jasmine': true
+    'jasmine': true,
+    "es6": true
   },
   'rules': {
     'semi': 1,
